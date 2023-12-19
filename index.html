@@ -216,6 +216,7 @@
         const item = document.createElement('li');
         item.textContent = data.id + '님이 입장 하였습니다.';
         messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight;
 
         userlist.innerHTML = '';
         data.users.forEach((e) => {
@@ -229,6 +230,8 @@
         const item = document.createElement('li');
         item.textContent = data.id + '님이 퇴장 하였습니다.';
         messages.appendChild(item);
+        messages.scrollTop = messages.scrollHeight;
+
         userlist.innerHTML = '';
         data.users.forEach((e) => {
           const user = document.createElement('li');
@@ -241,7 +244,6 @@
         const item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
-        
         messages.scrollTop = messages.scrollHeight;
       });
     </script>
