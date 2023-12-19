@@ -173,13 +173,10 @@
   <body>
     <div id="chat-container">
       <div id="chat-messages-container">
-        <div id="chat-messages"></div>
-        <!-- <div id="chat-input-container"> -->
-
+        <div id="chat-messages">
+          <!-- messages list will be added here dynamically -->
+        </div>
         <form id="form" action=""><input id="input" autocomplete="off" /><button>Send</button></form>
-        <!-- <input type="text" id="input-message" placeholder="채팅을 입력하세요" /> -->
-        <!-- <button id="btn-send">보내기</button> -->
-        <!-- </div> -->
       </div>
 
       <div id="user-list-container">
@@ -217,35 +214,35 @@
       socket.on('entry', (data) => {
         console.log(data);
         const item = document.createElement('li');
-        item.textContent = data.id+'님이 입장 하였습니다.';
+        item.textContent = data.id + '님이 입장 하였습니다.';
         messages.appendChild(item);
-        // window.scrollTo(0, document.body.scrollHeight);
-        userlist.innerHTML ='';
-        data.users.forEach((e)=> {
+
+        userlist.innerHTML = '';
+        data.users.forEach((e) => {
           const user = document.createElement('li');
           user.textContent = e;
           userlist.appendChild(user);
-        }) 
+        });
       });
 
       socket.on('exit', (data) => {
         const item = document.createElement('li');
-        item.textContent = data.id+'님이 퇴장 하였습니다.';
+        item.textContent = data.id + '님이 퇴장 하였습니다.';
         messages.appendChild(item);
-        // window.scrollTo(0, document.body.scrollHeight);
-        userlist.innerHTML ='';
-        data.users.forEach((e)=> {
+        userlist.innerHTML = '';
+        data.users.forEach((e) => {
           const user = document.createElement('li');
           user.textContent = e;
           userlist.appendChild(user);
-        }) 
+        });
       });
 
       socket.on('chat message', (msg) => {
         const item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
-        // window.scrollTo(0, document.body.scrollHeight);
+        
+        messages.scrollTop = messages.scrollHeight;
       });
     </script>
   </body>

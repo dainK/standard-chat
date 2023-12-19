@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
   });
   socket.on('chat message', (msg) => {
-    io.emit('chat message', socket.id + msg ); // 한 클라이언트가 말하면 모두에게 msg를 알림
+    io.emit('chat message', socket.id + ' ' + msg ); // 한 클라이언트가 말하면 모두에게 msg를 알림
     console.log('message: ' + msg);
   });
 });
